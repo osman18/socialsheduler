@@ -18,14 +18,13 @@ var dbURL = process.env.MONGODB_URI || 'mongodb://root:1993@ds147599.mlab.com:47
 var dbUser = process.env.DB_USER || 'root';
 var dbPassword = process.env.DB_PASS || '1993';
 
-
 var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
 db.open(function(e, d){
 	if (e) {
 		console.log(e);
 	} else {
 		if (process.env.NODE_ENV == 'live') {
-			db.authenticate(dbUser, dbPassword, function(e, res) {
+			db.authenticate(process.env.DB_USER, process.env.DB_PASS, function(e, res) {
 				if (e) {
 					console.log('mongo :: error: not authenticated', e);
 				}
@@ -34,14 +33,6 @@ db.open(function(e, d){
 				}
 			});
 		}	else{
-			db.authenticate(dbUser, dbPassword, function(e, res) {
-				if (e) {
-					console.log('mongo :: error: not authenticated', e);
-				}
-				else {
-					console.log('mongo :: authenticated and connected to database :: "'+dbName+'"');
-				}
-			});
 			console.log('mongo :: connected to database :: "'+dbName+'"');
 		}
 	}

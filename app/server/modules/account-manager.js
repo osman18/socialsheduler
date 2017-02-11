@@ -33,14 +33,6 @@ db.open(function(e, d){
 				}
 			});
 		}	else{
-			db.authenticate(process.env.dbUser, process.env.dbPassword, function(e, res) {
-				if (e) {
-					console.log('mongo :: error: not authenticated', e);
-				}
-				else {
-					console.log('mongo :: authenticated and connected to database :: "'+dbName+'"');
-				}
-			});
 			console.log('mongo :: connected to database :: "'+dbName+'"');
 		}
 	}
