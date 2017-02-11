@@ -17,7 +17,7 @@ function HomeController()
 
 	$('#btn-postImmediate').click(function(){ 
 		if($('#link').val()==""){
-			that.showPostedPopup('You should enter a status to share :)');
+			that.showWarning('You should enter a status to share :)');
 		}else{
 			$.ajax({
 				url: "/twitter/tweet/"+$('#link').val(),
@@ -85,6 +85,14 @@ function HomeController()
 	this.showPostedPopup = function(msg){
 		$('.modal-alert').modal({ show : false, keyboard : false, backdrop : 'static' });
 		$('.modal-alert .modal-header h4').text('Success!');
+		$('.modal-alert .modal-body p').html(msg);
+		$('.modal-alert').modal('show');
+		$('.modal-alert button').click(function(){window.location.href = '/home2';})
+		setTimeout(function(){window.location.href = '/home2';}, 3000);
+	}
+	this.showWarning = function(msg){
+		$('.modal-alert').modal({ show : false, keyboard : false, backdrop : 'static' });
+		$('.modal-alert .modal-header h4').text('Warning!');
 		$('.modal-alert .modal-body p').html(msg);
 		$('.modal-alert').modal('show');
 		$('.modal-alert button').click(function(){window.location.href = '/home2';})
