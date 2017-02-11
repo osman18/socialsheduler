@@ -16,17 +16,21 @@ function HomeController()
 	});
 
 	$('#btn-postImmediate').click(function(){ 
-		$.ajax({
-			url: "/twitter/tweet/"+$('#link').val(),
-			type: "GET",
-			data: {link : $('#link').val()},
-			success: function(data){
-	 			that.showPostedPopup('Your link has been posted.');
-			},
-			error: function(jqXHR){
-				console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
-			}
-		});
+		if($('#link').val()==""){
+			that.showPostedPopup('You should enter a status to share :)');
+		}else{
+			$.ajax({
+				url: "/twitter/tweet/"+$('#link').val(),
+				type: "GET",
+				data: {link : $('#link').val()},
+				success: function(data){
+					that.showPostedPopup('Your link has been posted.');
+				},
+				error: function(jqXHR){
+					console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+				}
+			});
+		}
 		/*window.location.href = '/twitter/tweet';*/});
 	
 // confirm account deletion //
