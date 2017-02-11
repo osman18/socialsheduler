@@ -9,8 +9,7 @@ exports.index = function(req, res){
   //res.render('auth-callback', { user: JSON.stringify(req.user) });
 	res.render('home2', {
 				title : 'Social Scheduler',
-				countries : CT,
 				udata : req.session.user,
-				showsignin: showsignin
+				showsignin: false
 			});
 };
