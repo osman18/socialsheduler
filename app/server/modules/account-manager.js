@@ -12,8 +12,9 @@ var moment 		= require('moment');
 var dbHost = process.env.DB_HOST || 'localhost'
 var dbPort = process.env.DB_PORT || 27017;*/
 var dbHost = process.env.DB_HOST || 'ds149069.mlab.com'
-var dbPort = process.env.DB_PORT || 49069;
-var dbName = process.env.DB_NAME || 'heroku_hl6kkzw4';
+var dbPort = process.env.DB_PORT || 47599;
+var dbName = process.env.DB_NAME || 'node-login';
+var dbURL = process.env.MONGODB_URI || 'mongodb://root:1993@ds147599.mlab.com:47599/node-login';
 
 var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
 db.open(function(e, d){

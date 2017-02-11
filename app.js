@@ -163,13 +163,13 @@ var dbHost = process.env.DB_HOST || 'ds149069.mlab.com'
 var dbPort = process.env.DB_PORT || 49069;
 var dbName = process.env.DB_NAME || 'heroku_hl6kkzw4';
 
-var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
-if (app.get('env') == 'live'){
+//var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
+/*if (app.get('env') == 'live'){
 // prepend url with authentication credentials // 
 	//dbURL = 'mongodb://'+process.env.DB_userT+':'+process.env.DB_PASS+'@'+dbHost+':'+dbPort+'/'+dbName;
-	dbURL = 'mongodb://heroku_hl6kkzw4:qigpfapu3os39hquh2pmetd5m7@ds149069.mlab.com:49069/heroku_hl6kkzw4';
+}*/
 
-}
+var dbURL = process.env.MONGODB_URI || 'mongodb://root:1993@ds147599.mlab.com:47599/node-login';
 
 app.use(express.session({
 	secret: 'aaee445te5d14fe6f6d04637f78077c76c73d1b4',
