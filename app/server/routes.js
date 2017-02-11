@@ -229,8 +229,10 @@ module.exports = function(app) {
 			country : req.body['country']
 		}, function(e){
 			if (e){
+				console.log(e);
 				res.status(400).send(e);
 			}	else{
+				console.log(e);
 				res.status(200).send('ok');
 			}
 		});
