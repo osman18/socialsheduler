@@ -9,7 +9,7 @@ var express = require('express')
   , cookieParser = require('cookie-parser')
   , MongoStore = require('connect-mongo')(express.session) 
   // server info
-  , domain = "https://socialsheduler.herokuapp.com"
+  , domain = "socialsheduler.herokuapp.com"
   , port = process.env.PORT || 3000
   // passport / twitter stuff
   , config = require('./config')
