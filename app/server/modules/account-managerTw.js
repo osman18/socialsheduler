@@ -96,7 +96,7 @@ exports.addNewAccount = function(newData, callback)
 
 exports.addNewTwitterAccount = function(newData, callback)
 {
-	accounts.findOne({user:newData.user}, function(e, o) {
+	/*accounts.findOne({user:newData.user}, function(e, o) {
 		if (o){
 			callback('username-taken');
 		}	else{
@@ -106,7 +106,16 @@ exports.addNewTwitterAccount = function(newData, callback)
 			});
 		}
 		
+	});*/
+	accounts.findOne({"userT.email":email}, function(e, o){ 
+		if(o){ 
+			callback('email-taken');
+		} else{
+			newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+			accounts.insert(newData, {safe: true}, callback);
+		}
 	});
+	
 }
 
 exports.updateAccount = function(newData, callback)

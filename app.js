@@ -116,7 +116,6 @@ twitterAuthz = new TwitterStrategy({
   , userTAuthorizationURL: 'https://api.twitter.com/oauth/authorize'
   },
   function(token, tokenSecret, profile, done) {
-	console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     userT.token = token;
     userT.tokenSecret = tokenSecret;
     userT.profile = profile;
