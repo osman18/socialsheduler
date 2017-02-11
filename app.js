@@ -9,8 +9,8 @@ var express = require('express')
   , cookieParser = require('cookie-parser')
   , MongoStore = require('connect-mongo')(express.session) 
   // server info
-  , domain = "localhost"
-  , port = process.env.PORT || 47599
+  , domain = "https://socialsheduler.herokuapp.com"
+  , port = process.env.PORT || 3000
   // passport / twitter stuff
   , config = require('./config')
   , passport = require('passport')
@@ -93,7 +93,8 @@ passport.deserializeUser(function(id, done) {
 twitterAuthn = new TwitterStrategy({
     consumerKey: config.consumerKey
   , consumerSecret: config.consumerSecret
-  , callbackURL: "http://" + domain + ":" + port + "/twitter/authn/callback"
+  //, callbackURL: "https://" + domain + ":" + port + "/twitter/authn/callback"
+  , callbackURL: "https://" + domain + "/twitter/authn/callback"
   },
   function(token, tokenSecret, profile, done) {
     userT.token = token;
@@ -110,7 +111,8 @@ twitterAuthn.name = 'twitterAuthn';
 twitterAuthz = new TwitterStrategy({
     consumerKey: config.consumerKey
   , consumerSecret: config.consumerSecret
-  , callbackURL: "http://" + domain + ":" + port + "/twitter/authz/callback"
+  //, callbackURL: "https://" + domain + ":" + port + "/twitter/authz/callback"
+  , callbackURL: "https://" + domain + "/twitter/authz/callback"
   , userTAuthorizationURL: 'https://api.twitter.com/oauth/authorize'
   },
   function(token, tokenSecret, profile, done) {
