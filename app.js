@@ -10,7 +10,7 @@ var express = require('express')
   , MongoStore = require('connect-mongo')(express.session) 
   // server info
   , domain = "localhost"
-  , port = process.env.PORT || 3000
+  , port = process.env.PORT || 47599
   // passport / twitter stuff
   , config = require('./config')
   , passport = require('passport')

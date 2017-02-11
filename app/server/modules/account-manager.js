@@ -86,7 +86,6 @@ exports.addNewAccount = function(newData, callback)
 						newData.pass = hash;
 					// append date stamp when record was created //
 						newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
-						db.auth("root", "1993" );
 						accounts.insert(newData, {safe: true}, callback);
 					});
 				}
