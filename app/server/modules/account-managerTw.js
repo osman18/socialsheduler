@@ -107,7 +107,7 @@ exports.addNewTwitterAccount = function(newData, callback)
 		}
 		
 	});*/
-	accounts.findOne({"userT.email":email}, function(e, o){ 
+	accounts.findOne({"userT.email":newData.email}, function(e, o){ 
 		if(o){ 
 			callback('email-taken');
 		} else{
