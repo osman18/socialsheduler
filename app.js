@@ -156,14 +156,19 @@ app.use(express.cookieParser());
 
 // build mongo database connection url //
 
-var dbHost = process.env.DB_HOST || 'localhost'
+/*var dbHost = process.env.DB_HOST || 'localhost'
 var dbPort = process.env.DB_PORT || 27017;
-var dbName = process.env.DB_NAME || 'node-login';
+var dbName = process.env.DB_NAME || 'node-login';*/
+var dbHost = process.env.DB_HOST || 'ds149069.mlab.com'
+var dbPort = process.env.DB_PORT || 49069;
+var dbName = process.env.DB_NAME || 'heroku_hl6kkzw4';
 
 var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
 if (app.get('env') == 'live'){
 // prepend url with authentication credentials // 
-	dbURL = 'mongodb://'+process.env.DB_userT+':'+process.env.DB_PASS+'@'+dbHost+':'+dbPort+'/'+dbName;
+	//dbURL = 'mongodb://'+process.env.DB_userT+':'+process.env.DB_PASS+'@'+dbHost+':'+dbPort+'/'+dbName;
+	dbURL = 'mongodb://heroku_hl6kkzw4:qigpfapu3os39hquh2pmetd5m7@ds149069.mlab.com:49069/heroku_hl6kkzw4';
+
 }
 
 app.use(express.session({

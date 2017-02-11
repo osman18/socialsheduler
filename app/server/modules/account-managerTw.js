@@ -8,9 +8,12 @@ var moment 		= require('moment');
 	ESTABLISH DATABASE CONNECTION
 */
 
-var dbName = process.env.DB_NAME || 'node-login';
+/*var dbName = process.env.DB_NAME || 'node-login';
 var dbHost = process.env.DB_HOST || 'localhost'
-var dbPort = process.env.DB_PORT || 27017;
+var dbPort = process.env.DB_PORT || 27017;*/
+var dbHost = process.env.DB_HOST || 'ds149069.mlab.com'
+var dbPort = process.env.DB_PORT || 49069;
+var dbName = process.env.DB_NAME || 'heroku_hl6kkzw4';
 
 var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
 db.open(function(e, d){
