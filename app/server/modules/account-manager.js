@@ -73,15 +73,7 @@ exports.manualLogin = function(user, pass, callback)
 /* record insertion, update & deletion methods */
 
 exports.addNewAccount = function(newData, callback)
-{			
-	db.authenticate(process.env.DB_USER, process.env.DB_PASS, function(e, res) {
-		if (e) {
-			console.log('mongo :: error: not authenticated', e);
-		}
-		else {
-			console.log('mongo :: authenticated and connected to database :: "'+dbName+'"');
-		}
-	});
+{
 	accounts.findOne({user:newData.user}, function(e, o) {
 		if (o){
 			callback('username-taken');
@@ -94,6 +86,7 @@ exports.addNewAccount = function(newData, callback)
 						newData.pass = hash;
 					// append date stamp when record was created //
 						newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+						accounts.auth("root", "1993" );
 						accounts.insert(newData, {safe: true}, callback);
 					});
 				}
