@@ -41,7 +41,7 @@ function initTwitterOauth() {
   , config.consumerKey
   , config.consumerSecret
   , "1.0A"
-  , "http://" + domain + ":" + port + "/twitter/auth/callback"
+  , "https://socialsheduler.herokuapp.com/twitter/auth/callback"
   , "HMAC-SHA1"
   );
 }
